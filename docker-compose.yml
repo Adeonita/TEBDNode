@@ -1,0 +1,20 @@
+version: '3.0'
+
+services:
+  postgres:
+    container_name: datasus_postgres
+    image: postgres:14-alpine
+    ports:
+      - "${DB_PORT}:5432"
+    volumes:
+      - "datasus-volume:/var/lib/postgresql/data:rw"
+      # - "./db:/docker-entrypoint-initdb.d:rw"
+    environment:
+      POSTGRES_DB: datasus
+      POSTGRES_USER: datasus
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    restart: unless-stopped
+
+volumes:
+  datasus-volume:
+    driver: "local"
