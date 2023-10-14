@@ -4,12 +4,11 @@ import { EntityManager } from 'typeorm';
 
 import loadCsvAndExec from '../helpers/loadCsvAndExec';
 import { HealthOrganization } from '../models/health-organization';
-import { City } from 'src/models/city';
 
 interface CNES {
   CNES: string;
   CPF_CNPJ: string;
-  CITY_ID: string;
+  CODUFMUN: string;
 }
 
 export default async function loadHealthOrganization(manager: EntityManager) {
@@ -28,7 +27,7 @@ export default async function loadHealthOrganization(manager: EntityManager) {
           repo.create({
             id: value.CNES,
             document: value.CPF_CNPJ,
-            cityId: value.CITY_ID ?? 'NA',
+            cityId: value.CODUFMUN,
           }),
       });
     }),
