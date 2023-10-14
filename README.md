@@ -14,6 +14,12 @@ docker-compose up -d && npm run etl
 
 *******************************************************************
 
+select distinct city_id from health_organizations;
+
+select count(distinct city_id) from health_organizations;
+
+pg_dump -U datasus datasus | gzip > docker-entrypoint-initdb.d/database.sql.gz
+
 select * from health_organizations limit 5;
 
 select * from hospitalizations limit 5;
