@@ -75,7 +75,7 @@ export default async function loadSus(
             dailyWithCompanion: parseInt(value.DIAR_ACOM),
             procedureId: value.PROC_REA,
             diagnosticId: value.DIAG_PRINC,
-            pacientCityId: value.MUNIC_RES, //tirar
+            pacientCityId: value.MUNIC_RES,
             healthOrganizationId: value.CNES,
             pacient: pacientRepo.create({
               age: parseInt(value.IDADE),
@@ -105,13 +105,13 @@ export default async function loadSus(
 
 function parseEducationalLevel(INSTRU: string): EducationalLevel {
   switch (INSTRU) {
-    case '1':
+    case '01':
       return EducationalLevel.illiterate;
-    case '2':
+    case '02':
       return EducationalLevel.elementary;
-    case '3':
+    case '03':
       return EducationalLevel.highSchool;
-    case '4':
+    case '04':
       return EducationalLevel.college;
     default:
       return EducationalLevel.unknown;
@@ -120,15 +120,15 @@ function parseEducationalLevel(INSTRU: string): EducationalLevel {
 
 function parseEthnic(RACA_COR: string): Ethnic {
   switch (RACA_COR) {
-    case '1':
+    case '01':
       return Ethnic.white;
-    case '2':
+    case '02':
       return Ethnic.black;
-    case '3':
+    case '03':
       return Ethnic.latin;
-    case '4':
+    case '04':
       return Ethnic.asian;
-    case '5':
+    case '05':
       return Ethnic.native;
     default:
       return Ethnic.unknown;
