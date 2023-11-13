@@ -1,5 +1,6 @@
 version: '3.0'
 
+#TODO: criar o banco datasus quando subir
 services:
   postgres:
     container_name: datasus_postgres
@@ -8,7 +9,7 @@ services:
       - "${DB_PORT}:5432"
     volumes:
       - "datasus-volume:/var/lib/postgresql/data:rw"
-      # - "./db:/docker-entrypoint-initdb.d:rw"
+      #- "./db:/docker-entrypoint-initdb.d:rw"
     environment:
       POSTGRES_DB: datasus
       POSTGRES_USER: datasus
