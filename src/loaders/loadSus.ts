@@ -69,9 +69,9 @@ export default async function loadSus(
 
           return repo.create({
             code: value.N_AIH,
-            amount: Math.trunc(parseFloat(value.VAL_TOT) * 100),
+            amount: Math.trunc(parseFloat(value.VAL_TOT)),
             date: parse(value.DT_INTER, 'yyyymmdd', 0),
-            dailyInternated: parseInt(value.QT_DIARIAS),
+            dailyInternated: parseInt(value.QT_DIARIAS), //TODO? Errado, precisa ser (data de entrada - data de saida)
             dailyWithCompanion: parseInt(value.DIAR_ACOM),
             procedureId: value.PROC_REA,
             diagnosticId: value.DIAG_PRINC,
@@ -112,6 +112,14 @@ function parseEducationalLevel(INSTRU: string): EducationalLevel {
     case '03':
       return EducationalLevel.highSchool;
     case '04':
+      return EducationalLevel.college;
+    case '1':
+      return EducationalLevel.illiterate;
+    case '2':
+      return EducationalLevel.elementary;
+    case '3':
+      return EducationalLevel.highSchool;
+    case '4':
       return EducationalLevel.college;
     default:
       return EducationalLevel.unknown;
